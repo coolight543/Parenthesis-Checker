@@ -10,23 +10,29 @@ public class Checker{
 public static void main(String [] args){
     check("{[()]}");
 }
-// 1 possible metho
-public static void check(String s)
+
+public static void samep (string s)
 {
-    int length = s.length()/2;
-    for (int k=0; k < (s.length()); k++)
+    String curlOne = "(";
+    String curlTwo = ")";
+    String sqOne = "[";
+    String sqTwo = "]";
+    String fancyOne = "{";
+    String fancyTwo = "}";
+    String end; 
+    int length = s.length();
+    while (s.length()>0)
     {
-        String first = s.substring(length-1, length);
-        String last = s.substring(length,length+1);
-        if (first.equals(last))
+        if (s.substring(0,1).equals(")") || s.substring(0,1).equals("]") || s.substring(0,1).equals("}"))
         {
-            s.replace(first,"");
-            s.replace(last,"");
+            System.out.println("Not Valid");
         }
-        else
-        {
-            System.out.println("Not valid");
-        }
+        // finds the first closing bracket
+        if ()
     }
 }
 }
+// find s the previous open bracket i-1, i, make sure it can pair up with the closing bracket i, i+1
+//concatenate 0,i-1 + i+1
+//reset counter (i) to zero so that it doesn't break
+//repeat infinite times
