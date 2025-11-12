@@ -12,44 +12,53 @@ String temp = "";
 String something = "";
 //precondition: The string must only contains parenthesis (), {}, []
 //postcondition: it would tell you if the parenthesis is used correctly
-public static void check (String s)
+public static boolean check (String s)
 {
     String temp = ""; 
     String something = "";
-    int length = s.length();
-    for (int i = 0; i<length; i++)
+    while (s.length() != 0){
+
+    
+    for (int i = 0; i < s.length(); i++)
     {
         if (s.substring(0,1).equals(")") || s.substring(0,1).equals("]") || s.substring(0,1).equals("}"))
         {
             System.out.println("Not Valid");
+            return false;
         }
-        if (s.substring(0,1).equals(""))
+        else if (s.substring(0,1).equals(""))
         {
             System.out.println("Valid");
+            return true;
         }
         // finds the first closing bracket
         else if (s.substring(i,i+1).equals(")") || s.substring(i,i+1).equals("]") || s.substring(i,i+1).equals("}"))
         {
             temp = s.substring(i-1,i);
             something = s.substring(i,i+1);
+            if ((temp.equals("(") && something.equals(")")) || (temp.equals("[") && something.equals("]")) || (temp.equals("{") && something.equals("}")) )
+            {   
+           s=s.substring(0,i-1) + s.substring(i+1);
+           i = s.length();
+            }
+            else{
+
+                System.out.println("temp is "+ temp+" something is "+something);
+                return false;
+            }
         }
-        if ((temp.equals("(") && something.equals(")")) || (temp.equals("[") && something.equals("]")) || (temp.equals("{") && something.equals("}")) )
-        {
-            System.out.println(s.substring(0,i-1) + s.substring(i+1));
-        }
-    }
-    if (length != 0)
-    {
-        System.out.println("not Valid");
-    }
-    else 
-    {
-        System.out.println("valid");
+        
+        
     }
 }
-public static void main(String [] args){
-    check("()");
+   
+    
+    return true;
+
 }
+    public static void main(String[] args){
+       System.out.println( check("{[{}([][])]}"));
+    }
 }
 // find s the previous open bracket i-1, i, make sure it can pair up with the closing bracket i, i+1
 //concatenate 0,i-1 + i+1
