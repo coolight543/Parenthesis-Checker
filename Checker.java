@@ -11,24 +11,30 @@ public static void main(String [] args){
     check("{[()]}");
 }
 
-public static void samep (string s)
+public static void check (String s)
 {
-    String curlOne = "(";
-    String curlTwo = ")";
-    String sqOne = "[";
-    String sqTwo = "]";
-    String fancyOne = "{";
-    String fancyTwo = "}";
-    String end; 
+    String temp = ""; 
     int length = s.length();
-    while (s.length()>0)
+    int i = 0; 
+    String something = "";
+    while (i<length)
     {
         if (s.substring(0,1).equals(")") || s.substring(0,1).equals("]") || s.substring(0,1).equals("}"))
         {
             System.out.println("Not Valid");
         }
         // finds the first closing bracket
-        if ()
+        else if (s.substring(i,i+1).equals(")") || s.substring(i,i+1).equals("]") || s.substring(i,i+1).equals("}"))
+        {
+            temp = s.substring(i-1,i);
+            something = s.substring(i,i+1);
+        }
+        if ((temp.equals("(") && something.equals(")")) || (temp.equals("[") && something.equals("]")) || (temp.equals("{") && something.equals("}")) )
+        {
+            System.out.println(s.substring(0,i-1) + s.substring(i+1));
+            i = -1;
+        }
+        i++;
     }
 }
 }
