@@ -26,10 +26,15 @@ public static boolean check (String s)
             System.out.println("Not Valid");
             return false;
         }
+       
         else if (s.substring(0,1).equals(""))
         {
             System.out.println("Valid");
             return true;
+        }
+        else if (s.substring(s.length()-1).equals("{") || s.substring(s.length()-1).equals("[") || s.substring(s.length()-1).equals("("))
+        {
+            return false;
         }
         // finds the first closing bracket
         else if (s.substring(i,i+1).equals(")") || s.substring(i,i+1).equals("]") || s.substring(i,i+1).equals("}"))
@@ -48,7 +53,6 @@ public static boolean check (String s)
             }
         }
         
-        
     }
 }
    
@@ -57,7 +61,7 @@ public static boolean check (String s)
 
 }
     public static void main(String[] args){
-       System.out.println( check("{[{}([][])]}"));
+       System.out.println( check("{["));
     }
 }
 // find s the previous open bracket i-1, i, make sure it can pair up with the closing bracket i, i+1
