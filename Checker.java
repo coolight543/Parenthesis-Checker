@@ -61,7 +61,7 @@ public static boolean check (String s)
 
 }
     public static void main(String[] args){
-       System.out.println( check("{["));
+       System.out.println( check("(("));
     }
 }
 // find s the previous open bracket i-1, i, make sure it can pair up with the closing bracket i, i+1
